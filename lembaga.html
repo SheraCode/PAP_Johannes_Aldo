@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="./assets/img/logodel.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>Lembaga</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Leelawadee%3A400%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Franklin%3A400"/>
-  <link rel="stylesheet" href="./styleslembaga/lembaga.css"/>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./assets/img/logodel.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Lembaga</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Leelawadee%3A400%2C700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Franklin%3A400"/>
+    <link rel="stylesheet" href="./styleslembaga/lembaga.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
     /* Style untuk pop-up */
     .popup {
@@ -27,7 +28,19 @@
       height: 20px; /* Atur tinggi popup */
     }
 
-
+    .search {
+      display: none;
+      position: absolute;
+      top: 20px; /* Sesuaikan posisi vertikal popup */
+      left: 20px; /* Sesuaikan posisi horizontal popup */
+      z-index: 999; /* Atur z-index agar lebih tinggi daripada video */
+      background: rgba(255, 255, 255, 0.0); /* rgba untuk membuat transparansi */
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 1300px; /* Atur lebar popup */
+      height: 20px; /* Atur tinggi popup */
+    }
 
   </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -56,12 +69,35 @@
       });
     });
   </script>
-
-
+<script>
+  $(document).ready(function(){
+    $('.vector-aQd').click(function(){
+      // Menggunakan AJAX untuk mengambil konten dari file HTML lain
+      $.ajax({
+        url: 'search.html', // Ganti dengan nama file HTML yang ingin kamu tampilkan
+        dataType: 'html',
+        success: function(response) {
+          // Menampilkan konten dalam pop-up saat berhasil memuat
+          $('.search').html(response);
+          $('.search').fadeIn();
+        }
+      });
+    });
+    // Menutup pop-up saat diklik di luar pop-up
+    $(document).mouseup(function(e) {
+      var popup = $('.search');
+      if (!popup.is(e.target) && popup.has(e.target).length === 0) {
+        popup.fadeOut();
+      }
+    });
+  });
+</script>
 </head>
 <body>
   <div class="popup"></div>
-<div class="wireframe-lembaga-7PK">
+  
+  <div class="wireframe-lembaga-7PK">
+  <div class="search"></div>
   <div class="auto-group-k6vk-ZFK">
     <div class="auto-group-xsr1-qVf">
       <div class="line-106-4dK">
